@@ -7,4 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test flow
-        run: echo "hello world"
+        run: |
+          node -v
+          npm -v
