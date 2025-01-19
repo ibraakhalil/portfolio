@@ -1,4 +1,4 @@
-name: First Workflow 1
+name: First Workflow
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 jobs:
   first-workflow:
     runs-on: ubuntu-latest
-
     steps:
       - name: First steps
         run: |

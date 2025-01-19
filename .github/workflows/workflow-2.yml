@@ -1,0 +1,10 @@
+name: workd flow 2
+
+on: workflow_dispatch
+
+jobs:
+  first-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test flow
+        run: echo "hello world"
