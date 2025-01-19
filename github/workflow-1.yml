@@ -1,6 +1,9 @@
 name: First Workflow
 
-on: [push]
+on:
+  push:
+    branches:
+      - main # Runs the workflow only when pushing to the main branch
 
 jobs:
   first-workflow:
@@ -9,5 +12,4 @@ jobs:
     steps:
       - name: First steps
         run: |
-          echo "Hello World!"
-          echo "Hello World!"
+          echo "Hello World!"  # Single echo to avoid redundancy
