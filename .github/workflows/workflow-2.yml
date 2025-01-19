@@ -1,4 +1,4 @@
-name: workd flow 2
+name: Second Actions
 
 on: workflow_dispatch
 
