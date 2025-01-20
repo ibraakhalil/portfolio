@@ -1,12 +1,22 @@
 name: Development workflow
 on: [push]
 jobs:
-  test-development:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: check current paths
-        run: pwd
-      - name: check folder files
-        run: |
-          cd ..
-          ls
+      - name: checkout the code
+        uses: actions/checkout@v3
+
+      - name: setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependancy
+        run: npm i
+
+      - name: Build project
+        run: npm run build
+
+      - name: build directory list
+        run: ls -alh .next
