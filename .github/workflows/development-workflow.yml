@@ -1,0 +1,10 @@
+name: Development workflow
+on: [push]
+jobs:
+  test-development:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check current paths
+        run: |
+          ls
+          pwd
