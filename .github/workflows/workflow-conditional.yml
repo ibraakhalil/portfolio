@@ -22,3 +22,9 @@ jobs:
         run: pwd
       - name: create file
         run: touch test-2.txt
+
+  check-installed-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check app
+        run: dpkg --get-selections
