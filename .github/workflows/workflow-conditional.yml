@@ -1,0 +1,24 @@
+name: Conditional workflow
+
+on:
+  push:
+    paths:
+      - 'src/components/**'
+
+jobs:
+  print-os-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check os name
+        run: uname
+
+      - name: check node version
+        run: node -version
+
+  create-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print paths
+        run: pwd
+      - name: create file
+        run: touch test-2.txt
