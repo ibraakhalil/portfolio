@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check current paths
-        run: |
-          dir
-          pwd
+        run: pwd
+      - name: check folder files
+        run: ls
