@@ -2,7 +2,7 @@
 
 import { GithubIcon, LinkedinIcon, TwitterIcon } from '../svg-icons/social-icons';
 
-export default function Header() {
+export default function Header({ className }) {
   return (
     <header className="fixed left-0 top-0 z-50 w-full">
       <div className="mx-auto flex min-h-[--header-height] w-[90%] max-w-[--container-width] items-center justify-between">
