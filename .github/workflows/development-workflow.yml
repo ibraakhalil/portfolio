@@ -7,4 +7,6 @@ jobs:
       - name: check current paths
         run: pwd
       - name: check folder files
-        run: ls
+        run: |
+          cd ..
+          ls
