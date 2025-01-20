@@ -11,6 +11,7 @@ export default function Header() {
           <li>Home</li>
           <li>About</li>
           <li>Projects</li>
+          <li>Blog</li>
           <li>Resume</li>
         </ul>
         <div className="flex items-center gap-4 [&>svg]:size-5">
