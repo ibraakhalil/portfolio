@@ -13,7 +13,7 @@ jobs:
         run: uname
 
       - name: check node version
-        run: node -version
+        run: node -v
 
   create-file:
     runs-on: ubuntu-latest
