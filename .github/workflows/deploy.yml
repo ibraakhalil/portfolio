@@ -21,7 +21,7 @@ jobs:
       - name: Zip Files for Deployment
         run: |
           mkdir -p deploy-package
-          cp -R build package.json deploy-package/
+          cp -R .next package-lock.json package.json deploy-package/
           cd deploy-package
           zip -r project.zip .
 
