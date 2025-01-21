@@ -1,10 +1,11 @@
 'use client';
 
+import { cn } from '@/utils/cn';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from '../svg-icons/social-icons';
 
-export default function Header({ className }) {
+export default function Header({ className }: { className?: string }) {
   return (
-    <header className="fixed left-0 top-0 z-50 w-full">
+    <header className={cn('fixed left-0 top-0 z-50 w-full', className)}>
       <div className="mx-auto flex min-h-[--header-height] w-[90%] max-w-[--container-width] items-center justify-between">
         <h1 className="text-2xl font-extrabold">IK</h1>
         <ul className="flex items-center gap-6">

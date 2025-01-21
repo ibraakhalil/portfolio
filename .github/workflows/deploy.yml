@@ -1,0 +1,38 @@
+name: Deploy to GCloud VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          npm install
+          npm run build
+
+      - name: Zip Files for Deployment
+        run: |
+          mkdir -p deploy-package
+          cp -R build package.json deploy-package/
+          cd deploy-package
+          zip -r project.zip .
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Copy Package to VM
+        run: |
+          scp -o StrictHostKeyChecking=no deploy-package/project.zip ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:${{ secrets.DEST_FOLDER }}
+
+
+          EOF
