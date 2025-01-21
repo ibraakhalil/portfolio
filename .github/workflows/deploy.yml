@@ -33,4 +33,3 @@ jobs:
       - name: Copy Package to VM
         run: |
           scp -o StrictHostKeyChecking=no deploy-package/project.zip ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:${{ secrets.DEST_FOLDER }}
-          EOF
