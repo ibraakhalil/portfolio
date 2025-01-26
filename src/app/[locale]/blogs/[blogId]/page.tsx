@@ -1,4 +1,3 @@
-import { setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 
 const blogs = Array.from({ length: 1000 }, (_, i) => ({
@@ -67,7 +66,6 @@ export default async function page({
 }) {
   const paramss = await params;
   const blogId = paramss.blogId;
-  setRequestLocale(paramss.locale);
   const blog = blogs[Number(blogId) - 1];
 
   return (

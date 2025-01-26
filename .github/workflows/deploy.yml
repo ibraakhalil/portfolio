@@ -37,3 +37,13 @@ jobs:
       - name: Copy Package to VM
         run: |
           scp -o StrictHostKeyChecking=no deploy-package/project.zip ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:${{ secrets.DEST_FOLDER }}
+
+      - name: SSH into VM and Deploy
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
+            cd ${{ secrets.DEST_FOLDER }}
+            unzip -o project.zip -d frontend
+            cd frontend
+            npm install --omit=dev
+            pm2 restart all || pm2 start npm --name "frontend" -- run start
+          EOF
