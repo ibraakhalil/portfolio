@@ -21,12 +21,11 @@ jobs:
           node -v
           npm install
           npm run build
-          npm start
 
       - name: Zip Files for Deployment
         run: |
           mkdir -p deploy-package
-          cp -R .next public node_modules package-lock.json package.json deploy-package/
+          cp -R .next public package-lock.json package.json deploy-package/
           cd deploy-package
           zip -r project.zip .
 
