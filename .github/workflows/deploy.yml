@@ -40,8 +40,10 @@ jobs:
       - name: Copy Package to VM
         run: |
           pwd
+          cd database
           ls
-          ls -l database -h
+          cd ..
+          ls -l deploy-package -h
           rsync -avz --progress --info=progress2 -e "ssh -o StrictHostKeyChecking=no" deploy-package/project.zip ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:${{ secrets.DEST_FOLDER }}
 
       - name: SSH into VM and Deploy
