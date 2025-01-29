@@ -41,7 +41,7 @@ jobs:
         run: |
           pwd
           ls
-          ls -l project.zip -h
+          ls -l database -h
           rsync -avz --progress --info=progress2 -e "ssh -o StrictHostKeyChecking=no" deploy-package/project.zip ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:${{ secrets.DEST_FOLDER }}
 
       - name: SSH into VM and Deploy
