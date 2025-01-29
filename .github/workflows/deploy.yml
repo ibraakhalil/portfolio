@@ -23,7 +23,7 @@ jobs:
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           S3_DB_FILE_PATH: ${{ secrets.S3_DB_FILE_PATH }}
         run: |
-          aws s3 cp s3://$S3_BUCKET_NAME/$S3_DB_FILE_PATH ./database
+          aws s3 cp s3://$S3_BUCKET_NAME/$S3_DB_FILE_PATH ./quran_main.zip
 
       - name: Zip Files for Deployment
         run: |
@@ -40,9 +40,7 @@ jobs:
       - name: Copy Package to VM
         run: |
           pwd
-          cd database
           ls
-          cd ..
           ls -l deploy-package -h
           rsync -avz --progress --info=progress2 -e "ssh -o StrictHostKeyChecking=no" deploy-package/project.zip ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:${{ secrets.DEST_FOLDER }}
 
