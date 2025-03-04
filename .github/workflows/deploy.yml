@@ -1,55 +1,41 @@
-name: Deploy to GCloud VM
+name: Deploy Next.js Application
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: |
-          npm install
-          npm run build
+      - name: Install dependencies
+        run: npm install
 
-      - name: Download SQLite database from S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
-          S3_DB_FILE_PATH: ${{ secrets.S3_DB_FILE_PATH }}
-        run: |
-          aws s3 cp s3://$S3_BUCKET_NAME/$S3_DB_FILE_PATH ./quran_main.zip
+      - name: Build Next.js application
+        run: npm run build
 
-      - name: Zip Files for Deployment
+      - name: Archive production build
         run: |
-          mkdir -p deploy-package
-          cp -R .next public package-lock.json package.json deploy-package/
-          cd deploy-package
-          zip -r project.zip .
+          zip -r build.zip .next package.json package-lock.json
 
       - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Copy Package to VM
         run: |
-          pwd
-          ls
-          ls -l deploy-package -h
-          rsync -avz --progress --info=progress2 -e "ssh -o StrictHostKeyChecking=no" deploy-package/project.zip ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:${{ secrets.DEST_FOLDER }}
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
-      - name: SSH into VM and Deploy
+      - name: Copy archive to Oracle server
+        run: scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no build.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.PROJECT_DIRECTORY }}
+
+      - name: Deploy application on Oracle server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
-            cd ${{ secrets.DEST_FOLDER }}
-            unzip -o project.zip -d frontend
-            cd frontend
-            npm install --omit=dev
-            pm2 restart all || pm2 start npm --name "frontend" -- run start
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+            cd ${{ secrets.PROJECT_DIRECTORY }}
+            unzip -o build.zip
+            rm build.zip
+            npm install --production
+            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
           EOF
