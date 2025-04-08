@@ -2,13 +2,18 @@ import Header from '@/components/global/header';
 import { routing } from '@/i18n/routing';
 import RootProvider from '@/provider/root-provider';
 import type { Metadata } from 'next';
-import { Cabin } from 'next/font/google';
+import localFont from 'next/font/local';
+
 import '../../styles/globals.css';
 
-const cabinFont = Cabin({
+const cabinFont = localFont({
+  src: [
+    {
+      path: '../../../public/fonts/cabin-regular.ttf',
+      style: 'normal',
+    },
+  ],
   variable: '--font-cabin',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +32,7 @@ export function generateStaticParams() {
 export default async function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
-      <body className={`${cabinFont.variable} font-[Cabin] antialiased`}>
+      <body className={`${cabinFont.variable} antialiased`}>
         <RootProvider>
           <Header />
           {children}

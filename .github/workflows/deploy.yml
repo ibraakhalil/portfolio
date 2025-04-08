@@ -1,4 +1,4 @@
-name: Deploy Next.js Application
+name: Deploy My Portfolio to Oracle Cloud
 
 on: workflow_dispatch
 
@@ -28,14 +28,14 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Copy archive to Oracle server
-        run: scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no build.zip ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.PROJECT_DIRECTORY }}
+        run: scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no build.zip ubuntu@${{ secrets.HOST }}:${{ secrets.PROJECT_DIRECTORY }}
 
       - name: Deploy application on Oracle server
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.HOST }} << 'EOF'
             cd ${{ secrets.PROJECT_DIRECTORY }}
             unzip -o build.zip
             rm build.zip
             npm install --production
-            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+            pm2 restart portfolio || pm2 start npm --name "portfolio" -- start
           EOF
