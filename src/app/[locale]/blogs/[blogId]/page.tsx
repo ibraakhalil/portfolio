@@ -53,12 +53,6 @@ const blogs = Array.from({ length: 1000 }, (_, i) => ({
           accusantium, maiores odit iusto?`,
 }));
 
-export async function generateStaticParams() {
-  return blogs.map((blog) => ({
-    blogId: String(blog.id),
-  }));
-}
-
 export default async function page({
   params,
 }: {
@@ -69,8 +63,8 @@ export default async function page({
   const blog = blogs[Number(blogId) - 1];
 
   return (
-    <div className="flex min-h-screen justify-center bg-gray-100 p-6 pt-[200px]">
-      <div className="max-w-2xl rounded-2xl bg-white p-6 shadow-lg">
+    <div className="bg-gray-100 flex min-h-screen justify-center p-6 pt-[200px]">
+      <div className="bg-white max-w-2xl rounded-2xl p-6 shadow-lg">
         <Image
           src="/images/nature.jpg"
           alt={blog.name}
@@ -79,8 +73,8 @@ export default async function page({
           className="rounded-lg"
         />
         <h1 className="mt-4 text-3xl font-bold">{blog.name}</h1>
-        <p className="mt-2 text-gray-600">By Author Name - January 26, 2025</p>
-        <p className="mt-4 text-gray-700">{blog.desc}</p>
+        <p className="text-gray-600 mt-2">By Author Name - January 26, 2025</p>
+        <p className="text-gray-700 mt-4">{blog.desc}</p>
       </div>
     </div>
   );
