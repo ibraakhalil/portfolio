@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export const AnimatedText = ({
   text,
@@ -52,7 +52,7 @@ export const AnimatedText = ({
       viewport={{ once }}
     >
       {words.map((word, index) => (
-        <motion.span variants={child} key={index} className="mr-1 mt-1">
+        <motion.span variants={child} key={index} className="mt-1 mr-1">
           {word}
         </motion.span>
       ))}

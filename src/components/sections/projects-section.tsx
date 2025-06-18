@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Button } from '../ui/button';
 
 interface Project {
@@ -13,6 +13,50 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    title: 'iHadith.com',
+    description:
+      'A comprehensive hadith platform developed collaboratively at Maxxcode, offering advanced search, categorization, and user-friendly UI.',
+    image: '/images/projects/ihadith.jpg',
+    tags: ['Next.js', 'Team Collaboration', 'SEO'],
+    github: 'https://github.com/ihadith/ihadith',
+    demo: 'https://ihadith.com',
+  },
+  {
+    title: 'Quranmazid.com',
+    description:
+      'A modern Quran platform with translation, tafsir, and recitation features, built with a focus on accessibility and performance.',
+    image: '/images/projects/quranmazid.jpg',
+    tags: ['Next.js', 'Team Collaboration', 'Accessibility'],
+    github: 'https://github.com/quranmazid/quranmazid',
+    demo: 'https://quranmazid.com',
+  },
+  {
+    title: 'DuaRuqyah.com',
+    description:
+      'A resourceful site for authentic duas and ruqyah, developed with a collaborative team at Maxxcode.',
+    image: '/images/projects/duaruqyah.jpg',
+    tags: ['Next.js', 'Team Collaboration'],
+    github: 'https://github.com/duaruqyah/duaruqyah',
+    demo: 'https://duaruqyah.com',
+  },
+  {
+    title: 'Messefy',
+    description:
+      'Mess and meal management app for students and mess managers, built with React.js and Node.js.',
+    image: '/images/projects/messefy.jpg',
+    tags: ['React.js', 'Node.js', 'MongoDB'],
+    github: 'https://github.com/ibrahimkhalilpro/messefy',
+    demo: 'https://messefy.com',
+  },
+  {
+    title: 'IKBlog',
+    description: 'A blog site with full CRUD operations, built using Next.js and MongoDB.',
+    image: '/images/projects/ikblog.jpg',
+    tags: ['Next.js', 'MongoDB', 'CRUD'],
+    github: 'https://github.com/ibrahimkhalilpro/ikblog',
+    demo: 'https://ikblog.com',
+  },
   {
     title: 'Modern E-Commerce Platform',
     description:

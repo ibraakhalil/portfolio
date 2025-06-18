@@ -14,7 +14,7 @@ export default function Page() {
     { name: 'destructive-foreground', value: 'bg-[hsla(var(--destructive-foreground))]' },
     { name: 'border', value: 'bg-[hsla(var(--border))]' },
     { name: 'input', value: 'bg-[hsla(var(--input))]' },
-    { name: 'ring', value: 'bg-[hsla(var(--ring))]' },
+    { name: 'ring-3', value: 'bg-[hsla(var(--ring))]' },
     { name: 'card', value: 'bg-[hsla(var(--card))]' },
     { name: 'card-foreground', value: 'bg-[hsla(var(--card-foreground))]' },
     { name: 'popover', value: 'bg-[hsla(var(--popover))]' },

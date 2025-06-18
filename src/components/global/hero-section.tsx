@@ -1,9 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useRef } from 'react';
 import { BackgroundBeamsWithCollision } from '../ui/background-beams';
-import { Button } from '../ui/button';
 import VariableFontCursorProximity from '../ui/font-cursor-proximity';
 import { MovingParticles } from '../ui/moving-particles';
 
@@ -15,7 +14,7 @@ export default function HeroSection() {
       <MovingParticles />
       <section
         id="home"
-        className="container relative flex min-h-screen items-center justify-center overflow-hidden py-20"
+        className="relative container flex min-h-screen justify-center overflow-hidden py-20"
       >
         <div className="relative flex flex-col items-start justify-center gap-6">
           <h2 className="font-medium uppercase">FullStack web Developer</h2>
@@ -25,7 +24,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-bold leading-tight md:text-7xl"
+            className="text-4xl leading-tight font-bold md:text-7xl"
           >
             <VariableFontCursorProximity
               label={`IBRAHIM KHALIL`}
@@ -41,7 +40,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-[540px] text-lg text-muted-foreground md:text-xl"
+            className="text-muted-foreground max-w-[540px] text-lg md:text-xl"
           >
             Crafting exceptional digital experiences with clean code and innovative solutions.
             Specializing in modern web applications and user-centric design.
@@ -53,10 +52,10 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap gap-4"
           >
-            <Button size="lg" className="relative overflow-hidden">
+            <button className="relative overflow-hidden">
               <span className="relative z-10">Explore My Work</span>
               <motion.div
-                className="absolute inset-0 z-0 bg-primary/20"
+                className="bg-primary/20 absolute inset-0 z-0"
                 initial={{ scale: 0, x: '100%' }}
                 animate={{ scale: 1.5, x: '-50%' }}
                 transition={{
@@ -66,10 +65,8 @@ export default function HeroSection() {
                   ease: 'linear',
                 }}
               />
-            </Button>
-            <Button variant="outline" size="lg">
-              Get in Touch
-            </Button>
+            </button>
+            <button>Get in Touch</button>
           </motion.div>
         </div>
       </section>

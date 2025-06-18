@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { AnimatedText } from '../ui/animated-text';
@@ -56,7 +56,7 @@ export default function ContactSection() {
                 type="text"
                 id="name"
                 {...register('name')}
-                className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 shadow-sm"
+                className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 shadow-xs"
               />
               {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
             </div>
@@ -69,7 +69,7 @@ export default function ContactSection() {
                 type="email"
                 id="email"
                 {...register('email')}
-                className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 shadow-sm"
+                className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 shadow-xs"
               />
               {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
             </div>
@@ -82,14 +82,14 @@ export default function ContactSection() {
                 id="message"
                 rows={4}
                 {...register('message')}
-                className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 shadow-sm"
+                className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border-gray-300 shadow-xs"
               />
               {errors.message && (
                 <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
               )}
             </div>
 
-            <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </motion.form>
@@ -101,7 +101,7 @@ export default function ContactSection() {
                 href="https://github.com/username"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 GitHub
               </a>
@@ -109,13 +109,13 @@ export default function ContactSection() {
                 href="https://linkedin.com/in/username"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 LinkedIn
               </a>
               <a
                 href="mailto:email@example.com"
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 Email
               </a>

@@ -20,9 +20,9 @@ export default function Header({ className }: { className?: string }) {
   const currentPath = usePathname();
 
   return (
-    <header className={cn('fixed left-0 top-0 z-50 w-full backdrop-blur-sm', className)}>
-      <div className="container mx-auto flex min-h-[--header-height] items-center justify-between">
-        <Link href="/" className="text-2xl font-extrabold transition-colors hover:text-primary">
+    <header className={cn('fixed top-0 left-0 z-50 w-full backdrop-blur-xs', className)}>
+      <div className="container mx-auto flex min-h-(--header-height) items-center justify-between">
+        <Link href="/" className="hover:text-primary text-2xl font-extrabold transition-colors">
           IK
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium">
@@ -30,7 +30,7 @@ export default function Header({ className }: { className?: string }) {
             <Link
               key={link.path}
               href={link.path}
-              className={cn('transition-colors hover:text-primary', {
+              className={cn('hover:text-primary transition-colors', {
                 'font-semibold': link.path === currentPath,
               })}
             >
@@ -46,7 +46,7 @@ export default function Header({ className }: { className?: string }) {
               href="https://github.com/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-primary"
+              className="hover:text-primary transition-colors"
             >
               <GithubIcon />
             </a>
@@ -54,7 +54,7 @@ export default function Header({ className }: { className?: string }) {
               href="https://linkedin.com/in/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-primary"
+              className="hover:text-primary transition-colors"
             >
               <LinkedinIcon />
             </a>
@@ -62,7 +62,7 @@ export default function Header({ className }: { className?: string }) {
               href="https://twitter.com/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-primary"
+              className="hover:text-primary transition-colors"
             >
               <TwitterIcon />
             </a>

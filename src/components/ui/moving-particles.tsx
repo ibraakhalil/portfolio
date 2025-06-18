@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import React, { useEffect, useState } from 'react';
 
 export const MovingParticles = React.memo(function MovingParticles() {
@@ -24,7 +24,7 @@ export const MovingParticles = React.memo(function MovingParticles() {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute h-1 w-1 rounded-full bg-primary"
+          className="bg-primary absolute h-1 w-1 rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
