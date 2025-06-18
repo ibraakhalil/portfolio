@@ -12,10 +12,7 @@ export default function HeroSection() {
   return (
     <BackgroundBeamsWithCollision>
       <MovingParticles />
-      <section
-        id="home"
-        className="relative container flex min-h-screen justify-center overflow-hidden py-20"
-      >
+      <section id="home" className="relative container flex min-h-screen overflow-hidden py-20">
         <div className="relative flex flex-col items-start justify-center gap-6">
           <h2 className="font-medium uppercase">FullStack web Developer</h2>
 

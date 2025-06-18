@@ -114,7 +114,7 @@ export default function ProjectsSection() {
       <div className="container mx-auto px-4">
         <h2 className="mb-12 text-center text-4xl font-bold">Projects</h2>
         <motion.div
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-8 lg:grid-cols-2"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

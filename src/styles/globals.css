@@ -74,6 +74,10 @@
   }
 }
 
+@utility container {
+  @apply max-w-[1100px] mx-auto;
+}
+
 @utility bg-background {
   @apply bg-[hsl(var(--background))] dark:bg-[hsl(var(--background))];
 }
